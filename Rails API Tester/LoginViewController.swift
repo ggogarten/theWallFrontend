@@ -10,15 +10,12 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    
     var token = ""
     var username = ""
     
     @IBOutlet weak var usernameTextFieldOut: UITextField!
     
     @IBOutlet weak var passwordTextFieldOut: UITextField!
-    
-    
     
     @IBAction func dismissButtonPress(_ sender: AnyObject) {
         
@@ -36,69 +33,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func loginToApi(username: String, password: String) {
         
         let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/token")!
-        //let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/users")!
         let request = NSMutableURLRequest(url: link)
         request.httpMethod = "GET"
-        //        let token = "2def66452b6c971099d089d4629833a7"
         
         let loginUsername = username
         let loginPassword = password
         let authString = "\(loginUsername):\(loginPassword)"
         
         let authData = authString.data(using: String.Encoding.utf8)
-        //        let base64AuthData = authData!.base64EncodedStringWithOptions(NSData.Base64EncodingOptions.Encoding64CharacterLineLength)
         let base64AuthData = authData!.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
         
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Basic \(base64AuthData)", forHTTPHeaderField: "Authorization")
         
-        
-        
-        //    request.httpBody = "{\"postMsg\":\"test\"}".data(using: String.Encoding.utf8);
-        
-        //        let jsonData = ["postMsg":msg, "username":"otherOtherUser"] as Dictionary
-        //
-        //        //        do {
-        //        //
-        //        //            if let json = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.WritingOptions.prettyPrinted) {
-        //        //
-        //        //                print(jsonData)
-        //        //            }
-        //        //        } catch {
-        //        //            print(error)
-        //        //        }
-        //
-        //        do {
-        //            let json = try JSONSerialization.data(withJSONObject: jsonData)
-        //            print("printing json")
-        //            print(json)
-        //            request.httpBody = json
-        //        } catch {
-        //            print("json serialization failed")
-        //        }
-        
-        
-        //        request.httpBody = "{\"postMsg\":\"\(msg)\"}".data(using: String.Encoding.utf8);
-        
-        //        let session = URLSession.shared
-        //        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-        //
-        //            if error == nil {
-        //                //                                print(response)
-        //                print("printing with error nil")
-        //                print(String(data: data!, encoding: String.Encoding.utf8))
-        ////                print(response)
-        //
-        //            } else {
-        //                //                print("printing task session error")
-        //                print(error)
-        //            }
-        //        })
-        //
-        //        task.resume()
-        //
-        //    }
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest, completionHandler: {
             (
@@ -148,11 +96,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         {
             return
         }
-        
-        //        guard let data_list = json as? NSArray else
-        //        {
-        //            return
-        //        }
         if let tokenResponse = json as? NSDictionary
         { print("tokenResponse as dict")
             for (key, value) in tokenResponse
@@ -161,7 +104,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 print(value)
                 var token = value
                 print (token)
-                //                var loggedUsername = self.username
                 print(username)
                 let defaults = UserDefaults.standard
                 defaults.set(token, forKey: "authToken")
@@ -170,19 +112,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 if let defaultsTest = defaults.string(forKey: "authToken") {
                     print(defaultsTest)
-                    //        dispatch_get_main_queue().asynchronously(execute: {
-                    
-                    //            dispatchMain(loginSegue())
-                    //                                loginSegue()
-                    //self.performSegueWithIdentifier("jumpToMessagesViewController", sender: self)
-                    //                })
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "loginToMain", sender: Any?.self)
                         
                     }
                     
                 }
-                //                {   print("printing error from msg list")
+                
                 
             }
         } else {
@@ -190,19 +126,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //    func loginSegue() {
-    //        self.performSegue(withIdentifier: "loginToMain", sender: Any?.self)
-    //
-    //    }
-    
     func createAlert(title: String, message: String) {
-    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "Got it!", style: .default) { (UIAlertAction) in
             print("you got it")
         }
         alertController.addAction(OKAction)
-    
-        self.present(alertController, animated: true) { 
+        
+        self.present(alertController, animated: true) {
             
         }
     }
@@ -246,60 +177,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
  // Pass the selected object to the new view controller.
  }
  */
-//                if let postId = post["id"] as? Double
-//                {
-//                    if let postMsg = post["postMsg"] as? String
-//                    {
-//                        if let createdAt = post["created_at"] as? String
-//                        {
-//                            let dateFormatter = DateFormatter()
-//                            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSz"
-//                            let msgDate = dateFormatter.date(from: createdAt)
-//                            let formatter = DateFormatter()
-//                            formatter.dateStyle = DateFormatter.Style.medium
-//                            formatter.timeStyle = DateFormatter.Style.medium
-//                            let createdAtString = formatter.string(from: msgDate!)
-//
-//                            if let username = post["username"] as? String
-//                            {
-//
-//                                tableDataUsername.append(username)
-//                                tableDataDate.append(createdAtString)
-//                                tableDataId.append(postId)
-//                                tableData.append(postMsg)
-//                                print(createdAt)
-//                                print(msgDate)
-//
-//
-//                            }
-//
-//
-//                            //                        if let createdAt = post["created_at"] as? String
-//                            //                        {
-//                            //                        if postId > tableDataId.last as! Double {
-//                            //
-//
-//
-//                        }
-//
-//
-//
-//
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    tableData.reverse()
-//    tableDataId.reverse()
-//    tableDataDate.reverse()
-//    tableDataUsername.reverse()
-//
-//
-//
-//    DispatchQueue.main.async(execute: {self.do_table_refresh()})
-//
-//}
 
 

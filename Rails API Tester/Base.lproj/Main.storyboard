@@ -7,57 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Rails_API_Tester" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITF-XO-3HW">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="500" id="jQF-JR-J52"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIC-8D-jlA">
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="6JY-2G-B7k"/>
-                                    <constraint firstAttribute="width" constant="120" id="Oj6-dX-Re6"/>
-                                </constraints>
-                                <state key="normal" title="Test API">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="testButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="05e-Vw-ef3"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="ITF-XO-3HW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="OT1-8M-SwO"/>
-                            <constraint firstItem="ITF-XO-3HW" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ru8-I0-Fbl"/>
-                            <constraint firstItem="ITF-XO-3HW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZXk-VH-q2S"/>
-                            <constraint firstItem="MIC-8D-jlA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i0p-8q-76i"/>
-                            <constraint firstItem="MIC-8D-jlA" firstAttribute="top" secondItem="ITF-XO-3HW" secondAttribute="bottom" constant="16" id="vaV-3B-tmi"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="testResponseLabel" destination="ITF-XO-3HW" id="Dwd-JX-enr"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
-        </scene>
         <!--Tester View Controller-->
         <scene sceneID="qpj-sW-qEO">
             <objects>

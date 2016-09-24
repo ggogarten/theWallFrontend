@@ -31,7 +31,7 @@ class SignupViewController: UIViewController {
                         signUpToApi(username: usernameTextFieldOut.text!, password: passwordTextFieldOut.text!, email: emailTextFieldOut.text!)
                     } else {
                         createAlert(title: "Password Error", message: "Please make sure both password and confirm password are the same")
-                       print("passwords don't match")
+                        print("passwords don't match")
                     }
                 } else {
                     createAlert(title: "Password Error", message: "Please make sure both password and confirm password are the same")
@@ -51,7 +51,7 @@ class SignupViewController: UIViewController {
     @IBAction func loginButtonPress(_ sender: AnyObject) {
         
         performSegue(withIdentifier: "signupToLogin", sender: Any?.self)
-
+        
     }
     
     @IBAction func dismissButtonPress(_ sender: AnyObject) {
@@ -61,7 +61,7 @@ class SignupViewController: UIViewController {
     }
     
     func signUpToApi(username: String, password: String, email: String) {
-       
+        
         print(username)
         print(password)
         print(email)
@@ -69,24 +69,10 @@ class SignupViewController: UIViewController {
         let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/users")!
         let request = NSMutableURLRequest(url: link)
         request.httpMethod = "POST"
-//        let token = authToken
-//        request.addValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         
-        //    request.httpBody = "{\"postMsg\":\"test\"}".data(using: String.Encoding.utf8);
-        
         let jsonData = ["username":username, "password":password, "email":email] as Dictionary
-        
-        //        do {
-        //
-        //            if let json = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.WritingOptions.prettyPrinted) {
-        //
-        //                print(jsonData)
-        //            }
-        //        } catch {
-        //            print(error)
-        //        }
         
         do {
             let json = try JSONSerialization.data(withJSONObject: jsonData)
@@ -97,23 +83,14 @@ class SignupViewController: UIViewController {
             print("json serialization failed")
         }
         
-        
-        //        request.httpBody = "{\"postMsg\":\"\(msg)\"}".data(using: String.Encoding.utf8);
-        
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
             
             if error == nil {
-                //                                print(response)
                 print("printing with error nil")
                 print(String(data: data!, encoding: String.Encoding.utf8))
                 self.loginToApi(username: username, password: password)
-//                DispatchQueue.main.async {
-//                self.performSegue(withIdentifier: "signupToLogin", sender: Any?.self)
-//                    
-//                }
             } else {
-                //                print("printing task session error")
                 print(error)
             }
         })
@@ -127,10 +104,8 @@ class SignupViewController: UIViewController {
         print(password)
         
         let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/token")!
-        //let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/users")!
         let request = NSMutableURLRequest(url: link)
         request.httpMethod = "GET"
-        //        let token = "2def66452b6c971099d089d4629833a7"
         
         let loginUsername = username
         let loginPassword = password
@@ -138,59 +113,12 @@ class SignupViewController: UIViewController {
         let authString = "\(loginUsername):\(loginPassword)"
         
         let authData = authString.data(using: String.Encoding.utf8)
-        //        let base64AuthData = authData!.base64EncodedStringWithOptions(NSData.Base64EncodingOptions.Encoding64CharacterLineLength)
         let base64AuthData = authData!.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
         
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Basic \(base64AuthData)", forHTTPHeaderField: "Authorization")
         
-        
-        
-        //    request.httpBody = "{\"postMsg\":\"test\"}".data(using: String.Encoding.utf8);
-        
-        //        let jsonData = ["postMsg":msg, "username":"otherOtherUser"] as Dictionary
-        //
-        //        //        do {
-        //        //
-        //        //            if let json = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.WritingOptions.prettyPrinted) {
-        //        //
-        //        //                print(jsonData)
-        //        //            }
-        //        //        } catch {
-        //        //            print(error)
-        //        //        }
-        //
-        //        do {
-        //            let json = try JSONSerialization.data(withJSONObject: jsonData)
-        //            print("printing json")
-        //            print(json)
-        //            request.httpBody = json
-        //        } catch {
-        //            print("json serialization failed")
-        //        }
-        
-        
-        //        request.httpBody = "{\"postMsg\":\"\(msg)\"}".data(using: String.Encoding.utf8);
-        
-        //        let session = URLSession.shared
-        //        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-        //
-        //            if error == nil {
-        //                //                                print(response)
-        //                print("printing with error nil")
-        //                print(String(data: data!, encoding: String.Encoding.utf8))
-        ////                print(response)
-        //
-        //            } else {
-        //                //                print("printing task session error")
-        //                print(error)
-        //            }
-        //        })
-        //
-        //        task.resume()
-        //
-        //    }
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest, completionHandler: {
             (
@@ -223,7 +151,6 @@ class SignupViewController: UIViewController {
                     }
                 }
             }
-            
         })
         
         task.resume()
@@ -245,11 +172,6 @@ class SignupViewController: UIViewController {
         {
             return
         }
-        
-        //        guard let data_list = json as? NSArray else
-        //        {
-        //            return
-        //        }
         if let tokenResponse = json as? NSDictionary
         { print("tokenResponse as dict")
             for (key, value) in tokenResponse
@@ -258,8 +180,8 @@ class SignupViewController: UIViewController {
                 print(value)
                 var token = value
                 print (token)
-                //                var loggedUsername = self.username
                 print(username)
+                
                 let defaults = UserDefaults.standard
                 defaults.set(token, forKey: "authToken")
                 defaults.set(username, forKey: "loggedUsername")
@@ -267,20 +189,10 @@ class SignupViewController: UIViewController {
                 
                 if let defaultsTest = defaults.string(forKey: "authToken") {
                     print(defaultsTest)
-                    //        dispatch_get_main_queue().asynchronously(execute: {
-                    
-                    //            dispatchMain(loginSegue())
-                    //                                loginSegue()
-                    //self.performSegueWithIdentifier("jumpToMessagesViewController", sender: self)
-                    //                })
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "signupToMain", sender: Any?.self)
-                        
                     }
-                    
                 }
-                //                {   print("printing error from msg list")
-                
             }
         }
     }
@@ -299,24 +211,24 @@ class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-                // Do any additional setup after loading the view.
+        
+        // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
