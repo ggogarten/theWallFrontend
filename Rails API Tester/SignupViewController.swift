@@ -300,14 +300,7 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let borderColor : UIColor = UIColor( red: 0.5, green: 0.5, blue:0, alpha: 1.0 )
-        
-       
-        usernameTextFieldOut.layer.borderColor = borderColor.cgColor
-        emailTextFieldOut.layer.borderColor = borderColor.cgColor
-        passwordTextFieldOut.layer.borderColor = borderColor.cgColor
-        confirmPasswordTextFieldOut.layer.borderColor = borderColor.cgColor
-        // Do any additional setup after loading the view.
+                // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
