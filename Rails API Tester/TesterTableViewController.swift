@@ -90,7 +90,7 @@ class TesterTableViewController: UITableViewController {
         
         // Configure the cell...
         if indexPath.row < tableData.count{
-            
+//            cell.postImg.isHidden = true
             cell.usernameLabel?.text = tableDataUsername[indexPath.row]
             cell.postLabel?.text = tableData[indexPath.row]
             cell.dateLabel?.text = tableDataDate[indexPath.row]
@@ -170,7 +170,7 @@ class TesterTableViewController: UITableViewController {
                                 let msgDate = dateFormatter.date(from: createdAt)
                                 let formatter = DateFormatter()
                                 formatter.dateStyle = DateFormatter.Style.medium
-                                formatter.timeStyle = DateFormatter.Style.medium
+                                formatter.timeStyle = DateFormatter.Style.short
                                 let createdAtString = formatter.string(from: msgDate!)
                                 
                                 if let username = post["username"] as? String

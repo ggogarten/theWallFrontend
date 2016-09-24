@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>&quot;theWall needs access to the photo library to be able to add a picture to a post.&quot;</string>
+	<key>NSCameraUsageDescription</key>
+	<string>&quot;theWall needs access to the camera to be able to add a picture to a post.&quot;</string>
 </dict>
 </plist>

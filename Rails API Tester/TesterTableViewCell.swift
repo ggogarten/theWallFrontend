@@ -16,6 +16,7 @@ class TesterTableViewCell: UITableViewCell {
     
     @IBOutlet weak var postLabel: UILabel!
     
+//    @IBOutlet weak var postImg: UIImageView!
     
     
     override func awakeFromNib() {

@@ -66,12 +66,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 print(statusCode)
                 if statusCode != nil {
                     if statusCode == 401 {
+                        self.createAlert(title: "Invalid Credentials", message: "Did you get your username and password right?")
                         print("invalid credentials")
                     } else {
                         if statusCode == 200 {
                             print("login succesful")
                             self.extract_json(data!, username: loginUsername)
                         } else {
+                            self.createAlert(title: "Unknown Error", message: "Something crazy happened and I didn't fix it yet. My bad. Please try closing the app and logging in again. Just once. If it doesn't work, it's on me and i'm working on it.")
                             print("unknown error")
                         }
                     }
@@ -161,6 +163,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextFieldOut.delegate = self
         // Do any additional setup after loading the view.
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            self.view.endEditing(true)
+            return false
+        }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
