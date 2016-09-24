@@ -13,6 +13,11 @@
 		3E9006DC1D8C4D6E00EE88B2 /* Rails_API_Tester.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E9006DA1D8C4D6E00EE88B2 /* Rails_API_Tester.xcdatamodeld */; };
 		3E9006DE1D8C4D6E00EE88B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E9006DD1D8C4D6E00EE88B2 /* Assets.xcassets */; };
 		3E9006E11D8C4D6E00EE88B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E9006DF1D8C4D6E00EE88B2 /* LaunchScreen.storyboard */; };
+		3EC9C0061D91AA8800700D89 /* TesterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9C0051D91AA8800700D89 /* TesterTableViewCell.swift */; };
+		3EC9C0081D91AAB600700D89 /* TesterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9C0071D91AAB600700D89 /* TesterTableViewController.swift */; };
+		3EC9C00A1D91AADE00700D89 /* TesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9C0091D91AADE00700D89 /* TesterViewController.swift */; };
+		3EC9C00C1D92359000700D89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9C00B1D92359000700D89 /* LoginViewController.swift */; };
+		3EC9C00E1D924F8200700D89 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9C00D1D924F8200700D89 /* SignupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		3E9006DD1D8C4D6E00EE88B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E9006E01D8C4D6E00EE88B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E9006E21D8C4D6E00EE88B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EC9C0051D91AA8800700D89 /* TesterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesterTableViewCell.swift; sourceTree = "<group>"; };
+		3EC9C0071D91AAB600700D89 /* TesterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesterTableViewController.swift; sourceTree = "<group>"; };
+		3EC9C0091D91AADE00700D89 /* TesterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TesterViewController.swift; sourceTree = "<group>"; };
+		3EC9C00B1D92359000700D89 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3EC9C00D1D924F8200700D89 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +69,11 @@
 				3E9006D31D8C4D6E00EE88B2 /* AppDelegate.swift */,
 				3E9006D51D8C4D6E00EE88B2 /* ViewController.swift */,
 				3E9006D71D8C4D6E00EE88B2 /* Main.storyboard */,
+				3EC9C00D1D924F8200700D89 /* SignupViewController.swift */,
+				3EC9C00B1D92359000700D89 /* LoginViewController.swift */,
+				3EC9C0091D91AADE00700D89 /* TesterViewController.swift */,
+				3EC9C0071D91AAB600700D89 /* TesterTableViewController.swift */,
+				3EC9C0051D91AA8800700D89 /* TesterTableViewCell.swift */,
 				3E9006DD1D8C4D6E00EE88B2 /* Assets.xcassets */,
 				3E9006DF1D8C4D6E00EE88B2 /* LaunchScreen.storyboard */,
 				3E9006E21D8C4D6E00EE88B2 /* Info.plist */,
@@ -140,9 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC9C00C1D92359000700D89 /* LoginViewController.swift in Sources */,
 				3E9006DC1D8C4D6E00EE88B2 /* Rails_API_Tester.xcdatamodeld in Sources */,
+				3EC9C00E1D924F8200700D89 /* SignupViewController.swift in Sources */,
 				3E9006D61D8C4D6E00EE88B2 /* ViewController.swift in Sources */,
+				3EC9C0061D91AA8800700D89 /* TesterTableViewCell.swift in Sources */,
 				3E9006D41D8C4D6E00EE88B2 /* AppDelegate.swift in Sources */,
+				3EC9C0081D91AAB600700D89 /* TesterTableViewController.swift in Sources */,
+				3EC9C00A1D91AADE00700D89 /* TesterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +326,7 @@
 				3E9006E71D8C4D6E00EE88B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
