@@ -34,31 +34,35 @@ class TesterViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    
     @IBAction func loginButtonPress(_ sender: AnyObject) {
-        
         performSegue(withIdentifier: "login", sender: Any?.self)
     }
+
+    @IBOutlet weak var loginButtonOut: UIButton!
     
-    @IBOutlet weak var loginButtonOut: UIBarButtonItem!
     
     @IBAction func logoutButtonPress(_ sender: AnyObject) {
         
         newPostButtonOut.isEnabled = false
+        loginButtonOut.isHidden = false
         loginButtonOut.isEnabled = true
-        loginButtonOut.title = "Login to write on the wall!"
+//        loginButtonOut.title = "login here to post"
+        logoutButtonOut.isHidden = true
         logoutButtonOut.isEnabled = false
-        logoutButtonOut.title = ""
+//        logoutButtonOut.text = ""
+        
         
         let defaults = UserDefaults.standard
         defaults.set("", forKey: "authToken")
         defaults.set("", forKey: "loggedUsername")
         defaults.set("false", forKey: "loggedIn")
         print("logged out")
-        //        print(authUser)
+//        print(authUser)
     }
     
-    @IBOutlet weak var logoutButtonOut: UIBarButtonItem!
     
+    @IBOutlet weak var logoutButtonOut: UIButton!
     
     
     
@@ -514,15 +518,18 @@ class TesterViewController: UIViewController, UITextViewDelegate {
             if let loggedIn: String = defaults.string(forKey: "loggedIn") {
                 if loggedIn == "true" {
                     logoutButtonOut.isEnabled = true
+                    loginButtonOut.isHidden = true
                     loginButtonOut.isEnabled = false
-                    loginButtonOut.title = ""
+//                    loginButtonOut.title = ""
                     newPostButtonOut.isEnabled = true
                     
                     print("printing login status:")
                     print(loggedIn)
                 } else {
+                    logoutButtonOut.isHidden = true
                     logoutButtonOut.isEnabled = false
-                    logoutButtonOut.title = ""
+//                    logoutButtonOut.title = ""
+                    loginButtonOut.isHidden = false
                     loginButtonOut.isEnabled = true
                     newPostButtonOut.isEnabled = false
                     print("printing login status:")
@@ -532,8 +539,10 @@ class TesterViewController: UIViewController, UITextViewDelegate {
             }
         } else {
             
+            logoutButtonOut.isHidden = true
             logoutButtonOut.isEnabled = false
-            logoutButtonOut.title = ""
+//            logoutButtonOut.title = ""
+            loginButtonOut.isHidden = false
             loginButtonOut.isEnabled = true
             newPostButtonOut.isEnabled = false
             
