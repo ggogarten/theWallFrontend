@@ -281,7 +281,32 @@ class TesterViewController: UIViewController, UITextViewDelegate, UINavigationCo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDefaults()
+//        loadDefaults()
+        let defaults = UserDefaults.standard
+        if defaults.string(forKey: "loggedIn") != nil {
+            if let loggedIn: String = defaults.string(forKey: "loggedIn") {
+                if loggedIn == "true" {
+                    logoutButtonOut.isEnabled = true
+                    loginButtonOut.isHidden = true
+                    loginButtonOut.isEnabled = false
+                    newPostButtonOut.isEnabled = true
+                
+                    
+                    print("printing login status:")
+                    print(loggedIn)
+                } else {
+                    logoutButtonOut.isHidden = true
+                    logoutButtonOut.isEnabled = false
+                    loginButtonOut.isHidden = false
+                    loginButtonOut.isEnabled = true
+                    newPostButtonOut.isEnabled = false
+                    print("printing login status:")
+                    print("logged out")
+                    
+                }
+            }
+        }
+
         
         newPostMsg.delegate = self
         // Do any additional setup after loading the view.

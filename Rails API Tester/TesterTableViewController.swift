@@ -176,6 +176,10 @@ class TesterTableViewController: UITableViewController {
                                 if let username = post["username"] as? String
                                 {
                                     
+//                                    posts["username"] = username
+//                                    posts["createdAtString"] = createdAtString
+//                                    print(posts)
+//                                    "createdAtString":createdAtString, "postId":postId, "postMsg":postMsg]
                                     tableDataUsername.append(username)
                                     tableDataDate.append(createdAtString)
                                     tableDataId.append(postId)
