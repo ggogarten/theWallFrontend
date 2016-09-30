@@ -8,7 +8,9 @@
 
 import UIKit
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var usernameTextFieldOut: UITextField!
     
@@ -19,6 +21,49 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextFieldOut: UITextField!
     
     @IBAction func signupButtonPress(_ sender: AnyObject) {
+        
+        signUpCheck()
+//        if usernameTextFieldOut.text != "" {
+//            
+//            if emailTextFieldOut.text != "" {
+//                
+//                if passwordTextFieldOut.text != "" {
+//                    
+//                    if passwordTextFieldOut.text == confirmPasswordTextFieldOut.text {
+//                        print("calling signup function")
+//                        signUpToApi(username: usernameTextFieldOut.text!, password: passwordTextFieldOut.text!, email: emailTextFieldOut.text!)
+//                    } else {
+//                        createAlert(title: "Password Error", message: "Please make sure both password and confirm password are the same")
+//                        print("passwords don't match")
+//                    }
+//                } else {
+//                    createAlert(title: "Password Error", message: "Please make sure both password and confirm password are the same")
+//                    print("password not filled in")
+//                }
+//            } else {
+//                createAlert(title: "Email Error", message: "Please make sure email is filled in.")
+//                print("email not filled in")
+//            }
+//        } else {
+//            createAlert(title: "Username Error", message: "Ooops, missing a username. We kind of need it. ;)")
+//            print("username not filled in")
+//        }
+    }
+    
+    
+    @IBAction func loginButtonPress(_ sender: AnyObject) {
+        
+        performSegue(withIdentifier: "signupToLogin", sender: Any?.self)
+        
+    }
+    
+    @IBAction func dismissButtonPress(_ sender: AnyObject) {
+        
+        performSegue(withIdentifier: "signupToMain", sender: Any?.self)
+        
+    }
+    
+    func signUpCheck() {
         
         if usernameTextFieldOut.text != "" {
             
@@ -45,18 +90,6 @@ class SignupViewController: UIViewController {
             createAlert(title: "Username Error", message: "Ooops, missing a username. We kind of need it. ;)")
             print("username not filled in")
         }
-    }
-    
-    
-    @IBAction func loginButtonPress(_ sender: AnyObject) {
-        
-        performSegue(withIdentifier: "signupToLogin", sender: Any?.self)
-        
-    }
-    
-    @IBAction func dismissButtonPress(_ sender: AnyObject) {
-        
-        performSegue(withIdentifier: "signupToMain", sender: Any?.self)
         
     }
     
@@ -216,8 +249,35 @@ class SignupViewController: UIViewController {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
+        if textField == self.usernameTextFieldOut {
+            self.emailTextFieldOut.becomeFirstResponder()
+        } else {
+            if textField == self.emailTextFieldOut {
+                self.passwordTextFieldOut.becomeFirstResponder()
+            } else {
+                if textField == self.passwordTextFieldOut {
+                    self.confirmPasswordTextFieldOut.becomeFirstResponder()
+                } else {
+                    if textField == self.confirmPasswordTextFieldOut {
+                        self.view.endEditing(true)
+                        signUpCheck()
+                        
+                    }
+                    
+                }
+            }
+        }
+//        self.view.endEditing(true)
+//        return false
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0,y :80), animated: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0,y :0), animated: true)
     }
     
     override func didReceiveMemoryWarning() {

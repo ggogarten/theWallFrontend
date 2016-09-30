@@ -143,6 +143,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginButtonPress(_ sender: AnyObject) {
         
+//        if usernameTextFieldOut.text != "" && passwordTextFieldOut.text != "" {
+//            
+//            let username = usernameTextFieldOut.text
+//            let password = passwordTextFieldOut.text
+//            
+//            loginToApi(username: username!, password: password!)
+//            
+//        } else {
+//            createAlert(title: "Empty Fields", message: "Please fill out all fields.")
+//        }
+    loginCheck()
+    }
+    
+    func loginCheck(){
         if usernameTextFieldOut.text != "" && passwordTextFieldOut.text != "" {
             
             let username = usernameTextFieldOut.text
@@ -164,17 +178,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            self.view.endEditing(true)
-            return false
-        }
-
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//            self.view.endEditing(true)
+//            return false
+//        }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.usernameTextFieldOut {
+            self.passwordTextFieldOut.becomeFirstResponder()
+        } else {
+            if textField == self.passwordTextFieldOut {
+                        self.view.endEditing(true)
+                        loginCheck()
+                    }
+                }
+        return true
+            }
 }
 /*
  // MARK: - Navigation
