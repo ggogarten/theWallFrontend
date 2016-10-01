@@ -1,0 +1,6 @@
+framework module Pods_Rails_API_Tester {
+  umbrella header "Pods-Rails API Tester-umbrella.h"
+
+  export *
+  module * { export * }
+}
