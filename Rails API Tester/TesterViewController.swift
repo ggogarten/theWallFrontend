@@ -11,6 +11,8 @@ import Foundation
 
 class TesterViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    let api = Bundle.main.infoDictionary!["APIURL"] as! String
+    
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     @IBOutlet weak var newPostMsg: UITextView!
@@ -179,7 +181,8 @@ class TesterViewController: UIViewController, UITextViewDelegate, UINavigationCo
         print(authUser)
         print("token for post")
         
-        let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/wall_posts")!
+//        let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/wall_posts")!
+        let link = URL(string: "\(api)/wall_posts")!
         let request = NSMutableURLRequest(url: link)
         request.httpMethod = "POST"
         let token = authToken

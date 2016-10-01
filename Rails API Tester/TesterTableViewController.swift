@@ -11,6 +11,10 @@ import Foundation
 
 class TesterTableViewController: UITableViewController {
     
+//    let api = NSBundle.mainBundle().infoDictionary![“MY_API_BASE_URL_ENDPOINT”] as! String
+    
+    let api = Bundle.main.infoDictionary!["APIURL"] as! String
+    
     var tableData:Array = [String()]
     
     var tableDataId = [Double()]
@@ -25,7 +29,8 @@ class TesterTableViewController: UITableViewController {
         
         print("Refreshed")
         
-        getDataFromUrl("https://gentle-shelf-67593.herokuapp.com/wall_posts")
+//        getDataFromUrl("https://gentle-shelf-67593.herokuapp.com/wall_posts")
+        getDataFromUrl("\(api)/wall_posts")
         
         print("Updated")
         
@@ -55,7 +60,8 @@ class TesterTableViewController: UITableViewController {
         
         self.tableView.addSubview(refresher)
         
-        getDataFromUrl("https://gentle-shelf-67593.herokuapp.com/wall_posts")
+//        getDataFromUrl("https://gentle-shelf-67593.herokuapp.com/wall_posts")
+        getDataFromUrl("\(api)/wall_posts")
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140

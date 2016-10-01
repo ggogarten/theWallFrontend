@@ -10,6 +10,8 @@ import UIKit
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
     
+    let api = Bundle.main.infoDictionary!["APIURL"] as! String
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var usernameTextFieldOut: UITextField!
@@ -99,7 +101,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         print(password)
         print(email)
         
-        let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/users")!
+//        let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/users")!
+        let link = URL(string: "\(api)/users")!
+        
         let request = NSMutableURLRequest(url: link)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -136,7 +140,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         print(username)
         print(password)
         
-        let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/token")!
+//        let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/token")!
+        let link = URL(string: "\(api)/token")!
+        
         let request = NSMutableURLRequest(url: link)
         request.httpMethod = "GET"
         

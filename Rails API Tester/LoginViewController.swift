@@ -9,6 +9,8 @@
 import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
+   
+    let api = Bundle.main.infoDictionary!["APIURL"] as! String
     
     var token = ""
     var username = ""
@@ -32,7 +34,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func loginToApi(username: String, password: String) {
         
-        let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/token")!
+//        let link = URL(string: "https://gentle-shelf-67593.herokuapp.com/token")!
+        let link = URL(string: "\(api)/token")!
+        
+        
         let request = NSMutableURLRequest(url: link)
         request.httpMethod = "GET"
         
